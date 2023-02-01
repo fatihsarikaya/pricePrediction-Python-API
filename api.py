@@ -53,7 +53,7 @@ api = Api(app)
 
 class Users(Resource):
     def get(self):
-        return {'Return' : "Home"}, 200
+        return {'Index' : "Home"}, 200
     def post(self):
         #ic(request.data)  # raw data
         #ic(request.json)  # json (if content-type of application/json is sent with the request)
@@ -90,9 +90,9 @@ class Users(Resource):
         ic(powerTo)
 
         mydb = mysql.connector.connect(
-            host="localhost", #127.0.0.1  #65.108.125.124
+            host="localhost", #127.0.0.1  
             user="root",
-            password="Wiveda2023!",
+            password="",
             database="price_prediction"
             )
         mycursor = mydb.cursor()
@@ -197,33 +197,40 @@ class Users(Resource):
         ic(linkdoorsforMobile)
         ############################################################################################################################
 
+
         mobileDeUrl  = "https://suchen.mobile.de/fahrzeuge/search.html"
 
+        #mobileDeLastUrl = mobileDeUrl + "?" +"dam=0&" + "ms=" + linkBrandforMobile + ";" + linkModelforMobile + "&sortOption.sortBy=searchNetGrossPrice&sortOption.sortOrder=ASCENDING&cn=DE" + "&ml=" + kilometerFrom + ":" + kilometerTo + "&fr=" + yearFrom + ":" + yearTo + "&ft=" + linkfuelTypesforMobile + "&tr=" + linkGearBoxesforMobile + "&powertype=kW"  + "&pw=" + powerFrom + ":" + powerTo + "&c=" + linkBodyTypeforMobile + "&" + linkdoorsforMobile
         mobileDeLastUrl = mobileDeUrl + "?" +"isSearchRequest=true&dam=0&" + "ms=" + linkBrandforMobile + ";" + linkModelforMobile + "&sortOption.sortBy=searchNetGrossPrice&sortOption.sortOrder=ASCENDING&cn=DE" + "&ml=" + kilometerFrom + ":" + kilometerTo + "&fr=" + yearFrom + ":" + yearTo + "&ft=" + linkfuelTypesforMobile + "&tr=" + linkGearBoxesforMobile + "&powertype=kW"  + "&pw=" + powerFrom + ":" + powerTo + "&c=" + linkBodyTypeforMobile + "&" + linkdoorsforMobile
-
         ic(mobileDeLastUrl)
 
-
-#        options = webdriver.ChromeOptions()
-#        prefs = {"profile.managed_default_content_settings.images": 2}
-#        #options.add_argument('headless')
-         #options.headless = True
-#        options.add_experimental_option("prefs", prefs)
-#        service = Service(executable_path = '/usr/bin/chromium-browser')
-#        driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
-#        driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
+        chrome_options = webdriver.ChromeOptions()
+        #prefs = {"profile.managed_default_content_settings.images": 2}
+        chrome_options.add_argument('--no-sandbox')
+        #chrome_options.add_argument('--window-size=1920,1080')
+        #chrome_options.add_argument("--start-maximized")
+        chrome_options.add_argument('--headless')
+        #chrome_options.add_argument('--incognito')
+        chrome_options.add_argument('--disable-gpu')
+        chrome_options.add_argument('--disable-infobars')
+        chrome_options.add_argument('--disable-dev-shm-usage')
+        #options.headless = True
+        #options.add_experimental_option("prefs", prefs)
+        service = Service(executable_path = '/usr/bin/google-chrome')
+        #driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+        driver = webdriver.Chrome(ChromeDriverManager().install(), options=chrome_options)
 ###########
-        fireFoxOptions = Options()
-        #fireFoxOptions.binary_location = "/usr/bin/firefox"  # r'C:\Program Files\Firefox Developer Edition\firefox.exe' # PC"ye Firefox Developer yüklenmelidir.
-        fireFoxOptions.FirefoxBinary = "/usr/bin/firefox"  # r'C:\Program Files\Firefox Developer Edition\firefox.exe' # PC"ye Firefox Developer yüklenmelidir.
-        #fireFoxOptions.binary_location = "/Applications/Firefox.app/Contents/MacOS/firefox-bin"  # r'C:\Program Files\Firefox Developer Edition\firefox.exe' # PC"ye Firefox Developer yüklenmelidir.
-        fireFoxOptions.add_argument("--headless")
-        # fireFoxOptions.add_argument("--window-size=1920,1080")
-        # fireFoxOptions.add_argument('--start-maximized')
-        fireFoxOptions.add_argument('--disable-gpu')
-        fireFoxOptions.add_argument('--no-sandbox')
- 
-        driver = webdriver.Firefox(options=fireFoxOptions)
+#        fireFoxOptions = Options()
+#       #fireFoxOptions.binary_location = "/usr/bin/firefox"  # r'C:\Program Files\Firefox Developer Edition\firefox.exe' # PC"ye Firefox Developer yüklenmelidir.
+#        fireFoxOptions.FirefoxBinary = "/usr/bin/firefox"  
+#       #fireFoxOptions.binary_location = "/Applications/Firefox.app/Contents/MacOS/firefox-bin"  # r'C:\Program Files\Firefox Developer Edition\firefox.exe' # PC"ye Firefox Developer yüklenmelidir.
+#        fireFoxOptions.add_argument("--headless")
+#       # fireFoxOptions.add_argument("--window-size=1920,1080")
+#       # fireFoxOptions.add_argument('--start-maximized')
+#        fireFoxOptions.add_argument('--disable-gpu')
+#        fireFoxOptions.add_argument('--no-sandbox')
+#
+#        driver = webdriver.Firefox(options=fireFoxOptions)
 
         pricelist_mobile = []
 
@@ -231,12 +238,22 @@ class Users(Resource):
         driver.get(mobileDeLastUrl)
         #ic(mobileDeLastUrl)
 
-#        driver.delete_all_cookies()
-        time.sleep(1)    #BAK #5
+        try:
+            result = base_soup.find('title')
+            ic("Are you a human-Checkbox :",result)
+        except:
+            ic("Pass")
 
-#        driver.find_element(By.XPATH, '/html/body/div[10]/div[2]/div[2]/div[1]/button').click()
+        driver.delete_all_cookies()
+        time.sleep(3)    #BAK #5
 
-#        WebDriverWait(driver, timeout=5).until(lambda d: d.find_element(By.ID, "dsp-upper-search-btn")).click()
+#        try:
+#            driver.find_element(By.XPATH, '/html/body/div[10]/div[2]/div[2]/div[1]/button').click()
+#            WebDriverWait(driver, timeout=5).until(lambda d: d.find_element(By.ID, "dsp-upper-search-btn")).click()
+#            ic("Clicked")
+#        except:
+#            ic("Not Clicked")
+#            pass
 
         base_source = driver.page_source
         base_soup = BeautifulSoup(base_source, 'html.parser')
@@ -638,4 +655,5 @@ class Users(Resource):
 api.add_resource(Users, '/api')  # add endpoints
 
 if __name__ == '__main__':
-    app.run(host='65.108.125.124')  # run our Flask app
+    app.run(host='127.0.0.1')  # run our Flask app
+    #app.run(host='65.108.125.124')

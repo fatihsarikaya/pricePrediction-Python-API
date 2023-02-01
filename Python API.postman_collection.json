@@ -1,0 +1,216 @@
+{
+	"info": {
+		"_postman_id": "f48f5dac-0e91-4f4e-8e4f-869e657c218f",
+		"name": "Python API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22205506"
+	},
+	"item": [
+		{
+			"name": "AvgPrice",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 2|xKYsROuzbUVHckCenMszp3DqU5b2ntUvI3HGuZCM",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"brand\":\"AUDI\",\"model\":\"Q7\",\"yearFrom\":\"2000\",\"yearTo\":\"2021\",\"kilometerFrom\":\"10000\",\"kilometerTo\":\"100000\",\"powerFrom\":\"30\",\"powerTo\":\"230\",\"bodyType\":\"SUV-Geländewagen-Pickup\",\"doors\":\"4/5\",\"fuelTypes\":\"Diesel\",\"gearBoxes\":\"Automatik\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/api",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"api"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AvgPrice Get",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true,
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 2|xKYsROuzbUVHckCenMszp3DqU5b2ntUvI3HGuZCM",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"brand\":\"BMW\",\"model\":\"220 Active Tourer\",\"yearFrom\":\"2010\",\"yearTo\":\"2022\",\"kilometerFrom\":\"10000\",\"kilometerTo\":\"100000\",\"powerFrom\":\"30\",\"powerTo\":\"230\",\"bodyType\":\"SUV-Geländewagen-Pickup\",\"doors\":\"4/5\",\"fuelTypes\":\"Diesel\",\"gearBoxes\":\"Automatik\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/api",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"api"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AvgPrice SERVER",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 2|xKYsROuzbUVHckCenMszp3DqU5b2ntUvI3HGuZCM",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"brand\":\"AUDI\",\"model\":\"Q7\",\"yearFrom\":\"2000\",\"yearTo\":\"2021\",\"kilometerFrom\":\"10000\",\"kilometerTo\":\"100000\",\"powerFrom\":\"30\",\"powerTo\":\"230\",\"bodyType\":\"SUV-Geländewagen-Pickup\",\"doors\":\"4/5\",\"fuelTypes\":\"Diesel\",\"gearBoxes\":\"Automatik\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://65.108.125.124:5000/api",
+					"protocol": "http",
+					"host": [
+						"65",
+						"108",
+						"125",
+						"124"
+					],
+					"port": "5000",
+					"path": [
+						"api"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AvgPrice SERVER GET",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true,
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 2|xKYsROuzbUVHckCenMszp3DqU5b2ntUvI3HGuZCM",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"brand\":\"AUDI\",\"model\":\"Q7\",\"yearFrom\":\"2000\",\"yearTo\":\"2021\",\"kilometerFrom\":\"10000\",\"kilometerTo\":\"100000\",\"powerFrom\":\"30\",\"powerTo\":\"230\",\"bodyType\":\"SUV-Geländewagen-Pickup\",\"doors\":\"4/5\",\"fuelTypes\":\"Diesel\",\"gearBoxes\":\"Automatik\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://65.108.125.124:5000/api",
+					"protocol": "http",
+					"host": [
+						"65",
+						"108",
+						"125",
+						"124"
+					],
+					"port": "5000",
+					"path": [
+						"api"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
